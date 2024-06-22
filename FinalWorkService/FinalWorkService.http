@@ -1,0 +1,6 @@
+@FinalWorkService_HostAddress = http://localhost:5237
+
+GET {{FinalWorkService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
