@@ -52,8 +52,11 @@ namespace UserService.DB
                     RoleId = e,
                     Name = e.ToString()
                 }));
-            OnModelCreatingPartial(modelBuilder);
+
+            base.OnModelCreating(modelBuilder);
+
+            //OnModelCreatingPartial(modelBuilder);
         }
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+        //partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
