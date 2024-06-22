@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalWorkService", "FinalWo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "..\UserService\UserService.csproj", "{7A279EC5-6617-4DC2-B89C-A926FE003322}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageService", "..\MessageService\MessageService.csproj", "{FFE086DE-0E53-43C6-9D0A-A5EC5B4AE23B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7A279EC5-6617-4DC2-B89C-A926FE003322}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A279EC5-6617-4DC2-B89C-A926FE003322}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A279EC5-6617-4DC2-B89C-A926FE003322}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFE086DE-0E53-43C6-9D0A-A5EC5B4AE23B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFE086DE-0E53-43C6-9D0A-A5EC5B4AE23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFE086DE-0E53-43C6-9D0A-A5EC5B4AE23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFE086DE-0E53-43C6-9D0A-A5EC5B4AE23B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
