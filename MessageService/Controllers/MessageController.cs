@@ -40,7 +40,7 @@ namespace MessageService.Controllers
 
         [HttpPost]
         [Route("ReceiveMessage")]
-        [Authorize(Roles = "Administrator, User")]
+        //[Authorize(Roles = "Administrator, User")]
         public ActionResult ReceiveMessage()
         {
             try

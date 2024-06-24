@@ -14,7 +14,7 @@ namespace MessageService.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Roles",
+                name: "Role",
                 columns: table => new
                 {
                     RoleId = table.Column<int>(type: "integer", nullable: false),
@@ -22,7 +22,7 @@ namespace MessageService.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Roles", x => x.RoleId);
+                    table.PrimaryKey("PK_Role", x => x.RoleId);
                 });
 
             migrationBuilder.CreateTable(
@@ -42,18 +42,18 @@ namespace MessageService.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    email = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    password = table.Column<byte[]>(type: "bytea", nullable: false),
-                    salt = table.Column<byte[]>(type: "bytea", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false),
+                    Password = table.Column<byte[]>(type: "bytea", nullable: false),
+                    Salt = table.Column<byte[]>(type: "bytea", nullable: false),
                     RoleId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("users_pkey", x => x.id);
+                    table.PrimaryKey("PK_users", x => x.id);
                     table.ForeignKey(
-                        name: "FK_users_Roles_RoleId",
+                        name: "FK_users_Role_RoleId",
                         column: x => x.RoleId,
-                        principalTable: "Roles",
+                        principalTable: "Role",
                         principalColumn: "RoleId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -80,21 +80,12 @@ namespace MessageService.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Roles",
-                columns: new[] { "RoleId", "Name" },
-                values: new object[,]
-                {
-                    { 0, "Admin" },
-                    { 1, "User" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Statuses",
                 columns: new[] { "StatusId", "Message" },
                 values: new object[,]
                 {
                     { 0, "Send" },
-                    { 1, "Receive" }
+                    { 1, "Received" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -107,12 +98,6 @@ namespace MessageService.Migrations
                 name: "IX_messages_StatusId",
                 table: "messages",
                 column: "StatusId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_users_email",
-                table: "users",
-                column: "email",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_users_RoleId",
@@ -133,7 +118,7 @@ namespace MessageService.Migrations
                 name: "Statuses");
 
             migrationBuilder.DropTable(
-                name: "Roles");
+                name: "Role");
         }
     }
 }

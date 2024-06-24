@@ -26,18 +26,18 @@ namespace MessageService.Repo
 
                 if (toUserContext != null)
                 {
-                    var mess = _messageContext.Messages.FirstOrDefault(x => x.Text == text && x.FromUser == fromUser && x.ToUser == toUser);
+                    var mess = _messageContext.Messages.FirstOrDefault(x => x.StatusId == StatusId.Received);
 
-                    if (mess != null)
-                    {
-                        throw new Exception("Сообщение уже отправлено");
-                    }
-                    else
-                    {
-                        var newMassage = new Message { Text = text, FromUser = fromUser, ToUser = toUser };
+                    //if (mess != null)
+                    //{
+                    //    throw new Exception("Сообщение уже получено");
+                    //}
+                    //else
+                    //{
+                        var newMassage = new Message { Text = text, FromUser = fromUser, ToUser = toUser, StatusId = StatusId.Send };
                         _messageContext.Messages.Add(newMassage);
                         _messageContext.SaveChanges();
-                    }
+                    //}
                 }
                 else
                 {
@@ -57,6 +57,8 @@ namespace MessageService.Repo
                     if (mess.ToUser == toUser)
                     { 
                         messages.Add($"Сообщение от {mess.FromUser}, текст сообщения: {mess.Text}");
+                        mess.StatusId = StatusId.Received;
+                        _messageContext.SaveChanges();
                     }
                 }
                 return messages;
