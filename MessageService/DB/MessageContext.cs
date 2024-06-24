@@ -7,8 +7,6 @@ namespace MessageService.DB
     // dotnet ef database update
     public partial class MessageContext : DbContext
     {
-        public virtual DbSet<User> Users { get; set; }
-        //public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Status> Statuses { get; set; }
 
@@ -28,30 +26,6 @@ namespace MessageService.DB
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>(entity =>
-            {
-                //entity.HasKey(p => p.Id).HasName("users_pkey");
-                //entity.HasIndex(e => e.Email).IsUnique();
-                entity.ToTable("users");
-                entity.Property(p => p.Id).HasColumnName("id");
-                //entity.Property(p => p.Email)
-                //      .HasMaxLength(255)
-                //      .HasColumnName("email");
-                //entity.Property(p => p.Password).HasColumnName("password");
-                //entity.Property(d => d.Salt).HasColumnName("salt");
-                //entity.Property(e => e.RoleId).HasConversion<int>();
-            });
-            //modelBuilder.Entity<Role>().Property(e => e.RoleId).HasConversion<int>();
-            //modelBuilder.Entity<Role>().HasData(
-            //    Enum.GetValues(typeof(RoleId))
-            //    .Cast<RoleId>()
-            //    .Select(e => new Role()
-            //    {
-            //        RoleId = e,
-            //        Name = e.ToString()
-            //    }));
-
-
             modelBuilder.Entity<Message>(entity =>
             {
                 entity.HasKey(p => p.Id).HasName("message_pkey");
@@ -60,8 +34,8 @@ namespace MessageService.DB
 
                 entity.Property(p => p.Id).HasColumnName("id");
                 entity.Property(p => p.Text).HasColumnName("text");
-                entity.Property(d => d.FromUser).HasColumnName("fromuser");
-                entity.Property(e => e.ToUser).HasColumnName("touser");
+                entity.Property(d => d.FromUser).HasColumnName("from_user");
+                entity.Property(e => e.ToUser).HasColumnName("to_user");
                 entity.Property(e => e.StatusId).HasConversion<int>(); 
             });
 

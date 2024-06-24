@@ -4,6 +4,6 @@
     {
         Send = 0,
         Received = 1
-
     }
 }
+ 

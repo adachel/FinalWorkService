@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MessageService.Migrations
 {
     [DbContext(typeof(MessageContext))]
-    [Migration("20240623013150_InitialCreate")]
+    [Migration("20240624124908_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -37,7 +37,7 @@ namespace MessageService.Migrations
 
                     b.Property<Guid>("FromUser")
                         .HasColumnType("uuid")
-                        .HasColumnName("fromuser");
+                        .HasColumnName("from_user");
 
                     b.Property<int>("StatusId")
                         .HasColumnType("integer");
@@ -49,7 +49,7 @@ namespace MessageService.Migrations
 
                     b.Property<Guid>("ToUser")
                         .HasColumnType("uuid")
-                        .HasColumnName("touser");
+                        .HasColumnName("to_user");
 
                     b.HasKey("Id")
                         .HasName("message_pkey");
@@ -60,20 +60,6 @@ namespace MessageService.Migrations
                     b.HasIndex("StatusId");
 
                     b.ToTable("messages", (string)null);
-                });
-
-            modelBuilder.Entity("MessageService.Models.Role", b =>
-                {
-                    b.Property<int>("RoleId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("RoleId");
-
-                    b.ToTable("Role");
                 });
 
             modelBuilder.Entity("MessageService.Models.Status", b =>
@@ -102,60 +88,13 @@ namespace MessageService.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MessageService.Models.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<byte[]>("Password")
-                        .IsRequired()
-                        .HasColumnType("bytea");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("integer");
-
-                    b.Property<byte[]>("Salt")
-                        .IsRequired()
-                        .HasColumnType("bytea");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("users", (string)null);
-                });
-
             modelBuilder.Entity("MessageService.Models.Message", b =>
                 {
-                    b.HasOne("MessageService.Models.Status", "Status")
+                    b.HasOne("MessageService.Models.Status", null)
                         .WithMany("Messages")
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Status");
-                });
-
-            modelBuilder.Entity("MessageService.Models.User", b =>
-                {
-                    b.HasOne("MessageService.Models.Role", "Role")
-                        .WithMany("Users")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("MessageService.Models.Role", b =>
-                {
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("MessageService.Models.Status", b =>

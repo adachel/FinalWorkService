@@ -22,27 +22,9 @@ namespace MessageService.Repo
         {
             using (var context = new MessageContext())
             {
-                var toUserContext = _messageContext.Users.FirstOrDefault(x => x.Id == toUser);
-
-                if (toUserContext != null)
-                {
-                    var mess = _messageContext.Messages.FirstOrDefault(x => x.Text == text && x.FromUser == fromUser && x.ToUser == toUser);
-
-                    if (mess != null)
-                    {
-                        throw new Exception("Сообщение уже отправлено");
-                    }
-                    else
-                    {
-                        var newMassage = new Message { Text = text, FromUser = fromUser, ToUser = toUser };
-                        _messageContext.Messages.Add(newMassage);
-                        _messageContext.SaveChanges();
-                    //}
-                }
-                else
-                {
-                    throw new Exception("такого получателя нет");
-                }
+                var newMassage = new Message { Text = text, FromUser = fromUser, ToUser = toUser };
+                _messageContext.Messages.Add(newMassage);
+                _messageContext.SaveChanges();
             }
         }
 
@@ -54,11 +36,15 @@ namespace MessageService.Repo
                 var messagesContext = _messageContext.Messages;
                 foreach (var mess in messagesContext)
                 {
-                    if (mess.ToUser == toUser)
-                    { 
+                    if (mess.ToUser == toUser && mess.StatusId == StatusId.Send)
+                    {
+                        var a = mess.StatusId;
                         messages.Add($"Сообщение от {mess.FromUser}, текст сообщения: {mess.Text}");
+                        mess.StatusId = StatusId.Received;
+
                     }
                 }
+                _messageContext.SaveChanges();
                 return messages;
             }
         }

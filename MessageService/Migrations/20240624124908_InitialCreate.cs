@@ -14,18 +14,6 @@ namespace MessageService.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Role",
-                columns: table => new
-                {
-                    RoleId = table.Column<int>(type: "integer", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Role", x => x.RoleId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Statuses",
                 columns: table => new
                 {
@@ -38,34 +26,13 @@ namespace MessageService.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "users",
-                columns: table => new
-                {
-                    id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Email = table.Column<string>(type: "text", nullable: false),
-                    Password = table.Column<byte[]>(type: "bytea", nullable: false),
-                    Salt = table.Column<byte[]>(type: "bytea", nullable: false),
-                    RoleId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_users", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_users_Role_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "Role",
-                        principalColumn: "RoleId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "messages",
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     text = table.Column<string>(type: "text", nullable: false),
-                    fromuser = table.Column<Guid>(type: "uuid", nullable: false),
-                    touser = table.Column<Guid>(type: "uuid", nullable: false),
+                    from_user = table.Column<Guid>(type: "uuid", nullable: false),
+                    to_user = table.Column<Guid>(type: "uuid", nullable: false),
                     StatusId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -98,11 +65,6 @@ namespace MessageService.Migrations
                 name: "IX_messages_StatusId",
                 table: "messages",
                 column: "StatusId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_users_RoleId",
-                table: "users",
-                column: "RoleId");
         }
 
         /// <inheritdoc />
@@ -112,13 +74,7 @@ namespace MessageService.Migrations
                 name: "messages");
 
             migrationBuilder.DropTable(
-                name: "users");
-
-            migrationBuilder.DropTable(
                 name: "Statuses");
-
-            migrationBuilder.DropTable(
-                name: "Role");
         }
     }
 }
