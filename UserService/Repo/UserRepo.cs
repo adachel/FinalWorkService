@@ -15,6 +15,11 @@ namespace UserService.Repo
         private UserContext _userContext; 
         private readonly IConfiguration _config;
 
+        public UserRepo(UserContext userContext)    //
+        {
+            _userContext = userContext;
+        }
+
         public UserRepo(IMapper mapper, UserContext userContext, IConfiguration config)
         {
             _mapper = mapper;
@@ -31,9 +36,7 @@ namespace UserService.Repo
                 if (user == null)
                 {
                     if (adminCount != 0 && roleId == RoleId.Admin)
-
                     {
-
                         throw new Exception("There can only be one administrator");
                     }
                     else
@@ -70,9 +73,7 @@ namespace UserService.Repo
         {
             using (_userContext)
             {
-
                 var users = _userContext.Users.Select(_mapper.Map<UserModel>).ToList();
-
                 return users;
             }
         }
@@ -89,9 +90,9 @@ namespace UserService.Repo
                         _userContext.Users.Remove(user);
                         _userContext.SaveChanges();
                     }
-                    else throw new Exception("нельзя удалять администратора");
+                    else throw new Exception("Administrator cannot be deleted");
                 }
-                else throw new Exception("такого нет");
+                else throw new Exception("This user is not exist");
             }
         }
 

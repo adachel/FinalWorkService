@@ -18,6 +18,11 @@ namespace MessageService.Repo
             _messageContext = messageContext;
         }
 
+        public MessageRepo(MessageContext messageContext)
+        {
+            _messageContext = messageContext;
+        }
+
         public void SendMessage(string text, Guid fromUser, Guid toUser)
         {
             using (var context = new MessageContext())

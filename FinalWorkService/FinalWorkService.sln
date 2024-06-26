@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "..\UserServi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageService", "..\MessageService\MessageService.csproj", "{FFE086DE-0E53-43C6-9D0A-A5EC5B4AE23B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalWorkTest", "..\FinalWorkTest\FinalWorkTest.csproj", "{CE298B0D-C30B-489A-A23A-4BCF30BD8B95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinalWorkTest", "..\FinalWorkTest\FinalWorkTest.csproj", "{CE298B0D-C30B-489A-A23A-4BCF30BD8B95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
