@@ -31,9 +31,6 @@ namespace UserService.Repo
         {
             using (var context = new UserContext())
             {
-                //_userContext.Users.RemoveRange(_userContext.Users);
-                //_userContext.SaveChanges();
-
                 var user = _userContext.Users.FirstOrDefault(x => x.Email == email);
                 var adminCount = _userContext.Users.Count(x => x.RoleId == RoleId.Admin);
                 if (user == null)
