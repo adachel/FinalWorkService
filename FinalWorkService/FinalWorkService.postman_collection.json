@@ -1,0 +1,419 @@
+{
+  "info": {
+    "_postman_id": "ffa52226-c915-45b4-ad62-b6b98074b73c",
+    "name": "FinalWorkService",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34156508"
+  },
+  "item": [
+    {
+      "name": "https://localhost:7156/Login/AddAdmin",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"string\",\r\n  \"role\": 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7156/Login/AddAdmin",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7156",
+          "path": [
+            "Login",
+            "AddAdmin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "https://localhost:7156/Login/AddAdmin",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"string\",\r\n  \"role\": 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7156/Login/AddAdmin",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7156",
+          "path": [
+            "Login",
+            "AddAdmin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "https://localhost:7156/Login/AddUser",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"user1@example.com\",\r\n  \"password\": \"string\",\r\n  \"role\": 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7156/Login/AddUser",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7156",
+          "path": [
+            "Login",
+            "AddUser"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "https://localhost:7156/Login/AddUser",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"user1@example.com\",\r\n  \"password\": \"string\",\r\n  \"role\": 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7156/Login/AddUser",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7156",
+          "path": [
+            "Login",
+            "AddUser"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "https://localhost:7156/Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"string\",\r\n  \"role\": 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7156/Login",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7156",
+          "path": [
+            "Login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "https://localhost:7156/Login/GetUsers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7156/Login/GetUsers",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7156",
+          "path": [
+            "Login",
+            "GetUsers"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "https://localhost:7156/Restricted/Admins",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2IiwidHlwIjoiSldUIn0.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluQGV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsIklkIjoiOTNjYjEyZjAtZWFmOS00ZWJkLWFmOTUtYTgwMmE5MGZiYWI3IiwiZXhwIjoxNzE5NDczNjU0LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTU2IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA1MCJ9.e_54PU3HxlTH37zGZtP1vjdFBs4DWAsB7TcTYkvPTi5UUym9N3cgFWMFR-VlcxZRGUwcCoNPOE4ibO1_2-48_S5UNNDSmArEyNRfJjQri48xOh2_7ZII4Mo59sB8rM17yKdofhZs-7MHF20VwgmGUK3TPKnIRoCPg1e2OLk8CI_NmXooWZkd2ugfIf-IJ9j82Q1teyFK1Xy6JiDIOGLjYAg_ZjUkabQZGBraXzLpuEf9K3BknNcnQwYgFcJUAbzk9q6lUWA8dwDkhCdG9dP6y50rbgB31tuVxJyJbMqs74Loe4ehka3eyMpgoFWGeFytAQZasNASGv6_1p0S3sJXgg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7156/Restricted/Admins",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7156",
+          "path": [
+            "Restricted",
+            "Admins"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "https://localhost:7156/Restricted/Users",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2IiwidHlwIjoiSldUIn0.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluQGV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsIklkIjoiOTNjYjEyZjAtZWFmOS00ZWJkLWFmOTUtYTgwMmE5MGZiYWI3IiwiZXhwIjoxNzE5NDczNjU0LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTU2IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA1MCJ9.e_54PU3HxlTH37zGZtP1vjdFBs4DWAsB7TcTYkvPTi5UUym9N3cgFWMFR-VlcxZRGUwcCoNPOE4ibO1_2-48_S5UNNDSmArEyNRfJjQri48xOh2_7ZII4Mo59sB8rM17yKdofhZs-7MHF20VwgmGUK3TPKnIRoCPg1e2OLk8CI_NmXooWZkd2ugfIf-IJ9j82Q1teyFK1Xy6JiDIOGLjYAg_ZjUkabQZGBraXzLpuEf9K3BknNcnQwYgFcJUAbzk9q6lUWA8dwDkhCdG9dP6y50rbgB31tuVxJyJbMqs74Loe4ehka3eyMpgoFWGeFytAQZasNASGv6_1p0S3sJXgg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7156/Restricted/Users",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7156",
+          "path": [
+            "Restricted",
+            "Users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "https://localhost:7156/Restricted/UserID",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2IiwidHlwIjoiSldUIn0.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluQGV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsIklkIjoiOTNjYjEyZjAtZWFmOS00ZWJkLWFmOTUtYTgwMmE5MGZiYWI3IiwiZXhwIjoxNzE5NDczNjU0LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTU2IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA1MCJ9.e_54PU3HxlTH37zGZtP1vjdFBs4DWAsB7TcTYkvPTi5UUym9N3cgFWMFR-VlcxZRGUwcCoNPOE4ibO1_2-48_S5UNNDSmArEyNRfJjQri48xOh2_7ZII4Mo59sB8rM17yKdofhZs-7MHF20VwgmGUK3TPKnIRoCPg1e2OLk8CI_NmXooWZkd2ugfIf-IJ9j82Q1teyFK1Xy6JiDIOGLjYAg_ZjUkabQZGBraXzLpuEf9K3BknNcnQwYgFcJUAbzk9q6lUWA8dwDkhCdG9dP6y50rbgB31tuVxJyJbMqs74Loe4ehka3eyMpgoFWGeFytAQZasNASGv6_1p0S3sJXgg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7156/Restricted/UserID",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7156",
+          "path": [
+            "Restricted",
+            "UserID"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "https://localhost:7050/Message/SendMessage",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2IiwidHlwIjoiSldUIn0.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluQGV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsIklkIjoiOTNjYjEyZjAtZWFmOS00ZWJkLWFmOTUtYTgwMmE5MGZiYWI3IiwiZXhwIjoxNzE5NDczNjU0LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTU2IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA1MCJ9.e_54PU3HxlTH37zGZtP1vjdFBs4DWAsB7TcTYkvPTi5UUym9N3cgFWMFR-VlcxZRGUwcCoNPOE4ibO1_2-48_S5UNNDSmArEyNRfJjQri48xOh2_7ZII4Mo59sB8rM17yKdofhZs-7MHF20VwgmGUK3TPKnIRoCPg1e2OLk8CI_NmXooWZkd2ugfIf-IJ9j82Q1teyFK1Xy6JiDIOGLjYAg_ZjUkabQZGBraXzLpuEf9K3BknNcnQwYgFcJUAbzk9q6lUWA8dwDkhCdG9dP6y50rbgB31tuVxJyJbMqs74Loe4ehka3eyMpgoFWGeFytAQZasNASGv6_1p0S3sJXgg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"text\": \"message to user1@example.com\",\r\n  \"fromUser\": \"93cb12f0-eaf9-4ebd-af95-a802a90fbab7\",\r\n  \"toUser\": \"9051c132-000d-43cf-84f0-b18404661b72\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7050/Message/SendMessage",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7050",
+          "path": [
+            "Message",
+            "SendMessage"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "https://localhost:7156/Login",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2IiwidHlwIjoiSldUIn0.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluQGV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsIklkIjoiOTNjYjEyZjAtZWFmOS00ZWJkLWFmOTUtYTgwMmE5MGZiYWI3IiwiZXhwIjoxNzE5NDczNjU0LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTU2IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA1MCJ9.e_54PU3HxlTH37zGZtP1vjdFBs4DWAsB7TcTYkvPTi5UUym9N3cgFWMFR-VlcxZRGUwcCoNPOE4ibO1_2-48_S5UNNDSmArEyNRfJjQri48xOh2_7ZII4Mo59sB8rM17yKdofhZs-7MHF20VwgmGUK3TPKnIRoCPg1e2OLk8CI_NmXooWZkd2ugfIf-IJ9j82Q1teyFK1Xy6JiDIOGLjYAg_ZjUkabQZGBraXzLpuEf9K3BknNcnQwYgFcJUAbzk9q6lUWA8dwDkhCdG9dP6y50rbgB31tuVxJyJbMqs74Loe4ehka3eyMpgoFWGeFytAQZasNASGv6_1p0S3sJXgg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"user1@example.com\",\r\n  \"password\": \"string\",\r\n  \"role\": 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7156/Login",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7156",
+          "path": [
+            "Login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "https://localhost:7050/Message/ReceiveMessage",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2IiwidHlwIjoiSldUIn0.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6InVzZXIxQGV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsIklkIjoiOTA1MWMxMzItMDAwZC00M2NmLTg0ZjAtYjE4NDA0NjYxYjcyIiwiZXhwIjoxNzE5NDc0NDgyLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTU2IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA1MCJ9.pwlXOx8ELBAgEb_RdTZQ7FClib43qMmmilH_jDp656eRHQ5ivqJYuh4RmTsP9GEiU8Gdl7tE8ldpH8dQvSXk3ZeGQlWZJGO0rhn3xOlOvSV1aFzL2bvZwwc71pDD6QhnGBqXMk1XUZDIYSs9uirMdUhaP-xhIramINhHL-Ln5_-Z8MS3kRZo62Sk9gy2x6sQv9dkLZqYZN_UtbO1jsodEWAI7VYqiC6mQOyswLQV_Y5lbwamGrcxzLMQSaB63txFnuDzkJo4CokBFG3qgJHXGoXdffVhA5m6Xwt99ej7Zg0Eah1qEGM6JuKkStg5hmM9H0Q3Pof_LHzlPBSy0olJ5Q",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7050/Message/ReceiveMessage",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7050",
+          "path": [
+            "Message",
+            "ReceiveMessage"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "https://localhost:7156/Login/DeleteUser",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2IiwidHlwIjoiSldUIn0.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluQGV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsIklkIjoiOTNjYjEyZjAtZWFmOS00ZWJkLWFmOTUtYTgwMmE5MGZiYWI3IiwiZXhwIjoxNzE5NDczNjU0LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTU2IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA1MCJ9.e_54PU3HxlTH37zGZtP1vjdFBs4DWAsB7TcTYkvPTi5UUym9N3cgFWMFR-VlcxZRGUwcCoNPOE4ibO1_2-48_S5UNNDSmArEyNRfJjQri48xOh2_7ZII4Mo59sB8rM17yKdofhZs-7MHF20VwgmGUK3TPKnIRoCPg1e2OLk8CI_NmXooWZkd2ugfIf-IJ9j82Q1teyFK1Xy6JiDIOGLjYAg_ZjUkabQZGBraXzLpuEf9K3BknNcnQwYgFcJUAbzk9q6lUWA8dwDkhCdG9dP6y50rbgB31tuVxJyJbMqs74Loe4ehka3eyMpgoFWGeFytAQZasNASGv6_1p0S3sJXgg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"user1@example.com\",\r\n  \"password\": \"string\",\r\n  \"role\": 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7156/Login/DeleteUser",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7156",
+          "path": [
+            "Login",
+            "DeleteUser"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

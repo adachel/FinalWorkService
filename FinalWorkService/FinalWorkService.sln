@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageService", "..\Messag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinalWorkTest", "..\FinalWorkTest\FinalWorkTest.csproj", "{CE298B0D-C30B-489A-A23A-4BCF30BD8B95}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PostmanCollection", "PostmanCollection", "{AB044920-D2EC-4A9C-8034-6E0116C8B4FB}"
+	ProjectSection(SolutionItems) = preProject
+		FinalWorkService.postman_collection.json = FinalWorkService.postman_collection.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
