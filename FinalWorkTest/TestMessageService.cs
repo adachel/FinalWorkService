@@ -16,7 +16,11 @@ namespace FinalWorkTest
     {
         private List<Message> _messages = new List<Message>()
         {
-        new Message() { Text = "MessageTextTest", FromUser = Guid.Parse("3db3f259-d930-4788-b9a1-3d72ff3df3e5"), ToUser = Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f"), StatusId = StatusId.Send },
+        new Message() { 
+            Text = "MessageTextTest", 
+            FromUser = Guid.Parse("3db3f259-d930-4788-b9a1-3d72ff3df3e5"), 
+            ToUser = Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f"), 
+            StatusId = StatusId.Send },
         };
         private string connectionString = "Host = localhost; Port=5432;Username=aaa;Password=1234;Database=FinalMessageTest";
 
@@ -42,13 +46,27 @@ namespace FinalWorkTest
         {
             using (var context = new MessageContext(connectionString))
             {
-                var message = new MessageViewModel() { Text = "New MessageTest", FromUser = Guid.Parse("3db3f259-d930-4788-b9a1-3d72ff3df3e5"), ToUser = Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f") };
+                var message = new MessageViewModel() 
+                { 
+                    Text = "New MessageTest", 
+                    FromUser = Guid.Parse("3db3f259-d930-4788-b9a1-3d72ff3df3e5"), 
+                    ToUser = Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f") 
+                };
 
                 var service = new MessageRepo(context);
-                service.SendMessage("New MessageTest",  Guid.Parse("3db3f259-d930-4788-b9a1-3d72ff3df3e5"), Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f"));
 
-                var messageCount = context.Messages.Count();
-                Assert.AreEqual(2, messageCount);
+                service.SendMessage("New MessageTest",  
+                    Guid.Parse("3db3f259-d930-4788-b9a1-3d72ff3df3e5"), 
+                    Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f"));
+
+                var messageBD = context.Messages.FirstOrDefault(x => 
+                    x.Text == "New MessageTest" && 
+                    x.FromUser == Guid.Parse("3db3f259-d930-4788-b9a1-3d72ff3df3e5") && 
+                    x.ToUser == Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f"));
+
+                Assert.AreEqual("New MessageTest", messageBD.Text);
+                Assert.AreEqual(StatusId.Send, messageBD.StatusId);
+
             }
         }
 
@@ -57,7 +75,19 @@ namespace FinalWorkTest
         {
             using (var context = new MessageContext(connectionString))
             {
-                
+                var toUser = Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f");
+
+                var service = new MessageRepo(context);
+
+                var messageBD = context.Messages.FirstOrDefault(x =>
+                    x.Text == "MessageTextTest" &&
+                    x.FromUser == Guid.Parse("3db3f259-d930-4788-b9a1-3d72ff3df3e5") &&
+                    x.ToUser == Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f"));
+                Assert.AreEqual(StatusId.Send, messageBD.StatusId);
+
+                service.ReceiveMessage(toUser);
+
+                Assert.AreEqual(StatusId.Received, messageBD.StatusId);
             }
         }
 

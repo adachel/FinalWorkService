@@ -38,9 +38,6 @@ namespace UserService
             });
 
 
-
-
-
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
             {
                 opt.TokenValidationParameters = new TokenValidationParameters
