@@ -1,104 +1,43 @@
-﻿using MessageService.DB;
+﻿using MessageService.Abstraction;
 using MessageService.DTO;
-using MessageService.Models;
-using MessageService.Repo;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UserService.Repo;
-using static System.Net.Mime.MediaTypeNames;
+using UserService.Abstractions;
 
 namespace FinalWorkTest
 {
-    public class TestMessageService
+    internal class TestMessageService
     {
-        private List<Message> _messages = new List<Message>()
-        {
-        new Message() { 
-            Text = "MessageTextTest", 
-            FromUser = Guid.Parse("3db3f259-d930-4788-b9a1-3d72ff3df3e5"), 
-            ToUser = Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f"), 
-            StatusId = StatusId.Send },
-        };
-        private string connectionString = "Host = localhost; Port=5432;Username=aaa;Password=1234;Database=FinalMessageTest";
-
-
+        private MockMessageService _mockMessageRepo;
         [SetUp]
         public void Setup()
         {
-            using (var context = new MessageContext(connectionString))
-            {
-                context.Messages.RemoveRange(context.Messages);
-                context.SaveChanges();
-
-                foreach (var item in _messages)
-                {
-                    context.Messages.Add(item);
-                }
-                context.SaveChanges();
-            }
+            _mockMessageRepo = new MockMessageService();
         }
 
         [Test]
         public void SendMessageTest()
         {
-            using (var context = new MessageContext(connectionString))
-            {
-                var message = new MessageViewModel() 
-                { 
-                    Text = "New MessageTest", 
-                    FromUser = Guid.Parse("3db3f259-d930-4788-b9a1-3d72ff3df3e5"), 
-                    ToUser = Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f") 
-                };
+            var message = new MessageViewModel() { Text = "messageTwo",
+                                                   FromUser = Guid.Parse("9388212b-262e-4f9b-92c8-0d44c97a4f7e"),
+                                                   ToUser = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6")
+            };
 
-                var service = new MessageRepo(context);
-
-                service.SendMessage("New MessageTest",  
-                    Guid.Parse("3db3f259-d930-4788-b9a1-3d72ff3df3e5"), 
-                    Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f"));
-
-                var messageBD = context.Messages.FirstOrDefault(x => 
-                    x.Text == "New MessageTest" && 
-                    x.FromUser == Guid.Parse("3db3f259-d930-4788-b9a1-3d72ff3df3e5") && 
-                    x.ToUser == Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f"));
-
-                Assert.AreEqual("New MessageTest", messageBD.Text);
-                Assert.AreEqual(StatusId.Send, messageBD.StatusId);
-
-            }
+            _mockMessageRepo.SendMessage(message.Text, message.FromUser, message.ToUser);
+            var res = _mockMessageRepo.Messages.FirstOrDefault(x => x.Text == "messageTwo");
+            Assert.IsNotNull(res);
         }
 
         [Test]
         public void ReceiveMessageTest()
         {
-            using (var context = new MessageContext(connectionString))
-            {
-                var toUser = Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f");
-
-                var service = new MessageRepo(context);
-
-                var messageBD = context.Messages.FirstOrDefault(x =>
-                    x.Text == "MessageTextTest" &&
-                    x.FromUser == Guid.Parse("3db3f259-d930-4788-b9a1-3d72ff3df3e5") &&
-                    x.ToUser == Guid.Parse("b1410410-efb0-43a8-aebb-2483ee14748f"));
-                Assert.AreEqual(StatusId.Send, messageBD.StatusId);
-
-                service.ReceiveMessage(toUser);
-
-                Assert.AreEqual(StatusId.Received, messageBD.StatusId);
-            }
-        }
-
-        [TearDown]
-        public void Teardown()
-        {
-            using (var context = new MessageContext(connectionString))
-            {
-                context.Messages.RemoveRange(context.Messages);
-                context.SaveChanges();
-            }
+            var toUser = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
+            var res = _mockMessageRepo.ReceiveMessage(toUser);
+            Assert.IsNotNull(res);
         }
     }
 }

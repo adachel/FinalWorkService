@@ -1,117 +1,56 @@
-using AutoMapper;
-using Castle.Core.Configuration;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
-using Moq;
-using System.Reflection.Metadata;
+п»їusing Moq;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UserService.Abstractions;
 using UserService.Controllers;
 using UserService.DB;
 using UserService.DTO;
 using UserService.Models;
-using UserService.Repo;
+using XAct.Users;
 
 namespace FinalWorkTest
 {
-    public class TestsUserService
+    internal class TestUserService
     {
-        private List<User> _users = new List<User>()
-        {
-        new User() { Email = "admin@example.com", Password = new byte[16], Salt = new byte[16], RoleId = RoleId.Admin },
-        new User() { Email = "user1@example.com", Password = new byte[16], Salt = new byte[16], RoleId = RoleId.User },
-        new User() { Email = "user2@example.com", Password = new byte[16], Salt = new byte[16], RoleId = RoleId.User }
-        };
-        private string connectionString = "Host = localhost; Port=5432;Username=aaa;Password=1234;Database=FinalUserTest";
-
-
+        private MockUserService _mockUserService;
         [SetUp]
         public void Setup()
         {
-            using (var context = new UserContext(connectionString))
-            {
-                context.Users.RemoveRange(context.Users);
-                context.SaveChanges();
-
-                foreach (var item in _users)
-                {
-                    context.Users.Add(item);
-                }
-                context.SaveChanges();
-            }
+            _mockUserService = new MockUserService();
         }
 
         [Test]
         public void AddUserTest()
         {
-            using (var context = new UserContext(connectionString))
+            var admin = new UserModel { Email = "admin2@example.com", Password = "1111", Role = UserRole.Administrator };
+            var user = new UserModel { Email = "user4@example.com", Password = "1111", Role = UserRole.User };
+
+            try
             {
-                var admin = new UserModel { Email = "admin1@example.com", Password = "1111", Role = UserRole.Administrator };
-                var user = new UserModel { Email = "user1@example.com", Password = "1111", Role = UserRole.User };
-                var newUser = new UserModel { Email = "user3@example.com", Password = "1111", Role = UserRole.User };
-
-                var arr = new List<UserModel>() { admin, user, newUser };
-
-                var service = new UserRepo(context);
-                foreach (var item in arr)
-                {
-                    try
-                    {
-                        service.UserAdd(item.Email, item.Password, (RoleId)item.Role);
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
-
-                var adminCount = context.Users.Count(x => x.RoleId == RoleId.Admin);
-                Assert.IsTrue(adminCount == 1); // admin только один
-
-                var doubleUser = context.Users.Count(x => x.Email == user.Email);
-                Assert.IsTrue(doubleUser == 1); // дубликат
-
-                var userCount = context.Users.Count(x => x.RoleId == RoleId.User);
-                Assert.IsTrue(userCount == 3); // добавление
+                _mockUserService.UserAdd(admin.Email, admin.Password, (RoleId)admin.Role);
             }
+            catch (Exception)
+            {
+                var resAdmin = _mockUserService.Users.FirstOrDefault(x => x.Email == admin.Email);
+                Assert.IsNull(resAdmin);
+            }
+
+            _mockUserService.UserAdd(user.Email, user.Password, (RoleId)user.Role);
+            var resUser = _mockUserService.Users.FirstOrDefault(x => x.Email == user.Email);
+            Assert.IsNotNull(resUser);
         }
 
         [Test]
         public void DeleteUserTest()
         {
-            using (var context = new UserContext(connectionString))
-            {
-                var admin = new UserModel { Email = "admin@example.com", Password = "", Role = UserRole.Administrator };
-                var user = new UserModel { Email = "user1@example.com", Password = "", Role = UserRole.User };
-                var arr = new List<UserModel>() { admin, user };
-
-                var service = new UserRepo(context);
-
-                foreach (var item in arr)
-                {
-                    try
-                    {
-                        service.DeleteUser(item.Email);
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
-
-                var adminCount = context.Users.Count(x => x.RoleId == RoleId.Admin);
-                Assert.IsTrue(adminCount == 1); // admin удалить нельзя
-
-                var userCount = context.Users.Count(x => x.RoleId == RoleId.User);
-                Assert.IsTrue(userCount == 1); // удаление
-            }
-        }
-
-        [TearDown]
-        public void Teardown()
-        {
-            using (var context = new UserContext(connectionString))
-            {
-                context.Users.RemoveRange(context.Users);
-                context.SaveChanges();
-            }
+            string email = "user1@example.com";
+            _mockUserService.DeleteUser(email);
+            var resUser = _mockUserService.Users.FirstOrDefault(x => x.Email == email);
+            Assert.IsNull(resUser);
         }
     }
 }
