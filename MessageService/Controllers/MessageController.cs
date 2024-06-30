@@ -38,7 +38,7 @@ namespace MessageService.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("ReceiveMessage")]
         [Authorize(Roles = "Administrator, User")]
         public ActionResult ReceiveMessage()
